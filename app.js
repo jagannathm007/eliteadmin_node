@@ -8,7 +8,7 @@ var cors = require("cors");
 var mongoSanitize = require("express-mongo-sanitize");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var webv1Router = require('./routes/webv1');
 
 var app = express();
 // view engine setup
@@ -25,9 +25,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/angular', express.static(__dirname + '/node_modules/angular'));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/webv1', webv1Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

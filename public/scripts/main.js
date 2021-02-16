@@ -1,0 +1,1 @@
+var EliteAdmin = angular.module("MyApp", []);
