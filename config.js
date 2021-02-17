@@ -21,7 +21,7 @@ function authenticated(req, res, next) {
                     IsSuccess: false
                 });
             } else {
-                req.token = token;
+                req.token = auth;
             }
         });
         next();
