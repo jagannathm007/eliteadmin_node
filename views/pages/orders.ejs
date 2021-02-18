@@ -1,1 +1,238 @@
-<h1>We are orders</h1>
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">Orders</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="javascript:void(0)">Masters</a>
+                </li>
+                <li class="breadcrumb-item active">Orders</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">DATA</h4>
+                <h6 class="card-subtitle">Listing of your orders.</h6>
+                <ul class="nav nav-tabs customtab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#pending" role="tab"><span
+                                class="hidden-sm-up"><i class="fas fa-history"></i></span>
+                            <span class="hidden-xs-down">Pending</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#running" role="tab"><span class="hidden-sm-up"><i
+                                    class="fas fa-motorcycle"></i></span>
+                            <span class="hidden-xs-down">Running</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#completed" role="tab"><span class="hidden-sm-up"><i
+                                    class="fas fa-check"></i></span>
+                            <span class="hidden-xs-down">Completed</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#cancelled" role="tab"><span class="hidden-sm-up"><i
+                                    class="fas fa-times"></i></span>
+                            <span class="hidden-xs-down">Cancelled</span></a>
+                    </li>
+                </ul>
+                <div class="tab-content p-20">
+                    <div class="tab-pane active" id="pending" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-stripped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Order No</th>
+                                        <th>Customer Name</th>
+                                        <th>Pickup & Drop</th>
+                                        <th>Amount</th>
+                                        <th>Request Status</th>
+                                        <th>Ride Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <b>#ORD-000101</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <b>Jagannath Maharana</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <a href="#">20 Stops</a>
+                                        </td>
+                                        <td>
+                                            <a href="#">400</a>
+                                        </td>
+                                        <td>Pending</td>
+                                        <td>Pending</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs" title="Assign to delivery boy"><i
+                                                    class="fas fa-bars"></i></a>
+                                            <a href="#" class="btn btn-info btn-xs" title="Edit"><i
+                                                    class="far fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger btn-xs" title="Delete"><i
+                                                    class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="running" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-stripped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Order No</th>
+                                        <th>Customer Name</th>
+                                        <th>Pickup & Drop</th>
+                                        <th>Amount</th>
+                                        <th>Request Status</th>
+                                        <th>Ride Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <b>#ORD-000101</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <b>Jagannath Maharana</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <a href="#">20 Stops</a>
+                                        </td>
+                                        <td>
+                                            <a href="#">400</a>
+                                        </td>
+                                        <td>Pending</td>
+                                        <td>Pending</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs" title="Assign to delivery boy"><i
+                                                    class="fas fa-bars"></i></a>
+                                            <a href="#" class="btn btn-info btn-xs" title="Edit"><i
+                                                    class="far fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger btn-xs" title="Delete"><i
+                                                    class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="completed" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-stripped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Order No</th>
+                                        <th>Customer Name</th>
+                                        <th>Pickup & Drop</th>
+                                        <th>Amount</th>
+                                        <th>Request Status</th>
+                                        <th>Ride Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <b>#ORD-000101</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <b>Jagannath Maharana</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <a href="#">20 Stops</a>
+                                        </td>
+                                        <td>
+                                            <a href="#">400</a>
+                                        </td>
+                                        <td>Pending</td>
+                                        <td>Pending</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs" title="Assign to delivery boy"><i
+                                                    class="fas fa-bars"></i></a>
+                                            <a href="#" class="btn btn-info btn-xs" title="Edit"><i
+                                                    class="far fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger btn-xs" title="Delete"><i
+                                                    class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="cancelled" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-stripped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Order No</th>
+                                        <th>Customer Name</th>
+                                        <th>Pickup & Drop</th>
+                                        <th>Amount</th>
+                                        <th>Request Status</th>
+                                        <th>Ride Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <b>#ORD-000101</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <b>Jagannath Maharana</b><br />
+                                            <small class="card-subtitle">18/02/2021 12:40AM</small>
+                                        </td>
+                                        <td>
+                                            <a href="#">20 Stops</a>
+                                        </td>
+                                        <td>
+                                            <a href="#">400</a>
+                                        </td>
+                                        <td>Pending</td>
+                                        <td>Pending</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs" title="Assign to delivery boy"><i
+                                                    class="fas fa-bars"></i></a>
+                                            <a href="#" class="btn btn-info btn-xs" title="Edit"><i
+                                                    class="far fa-eye"></i></a>
+                                            <a href="#" class="btn btn-danger btn-xs" title="Delete"><i
+                                                    class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
