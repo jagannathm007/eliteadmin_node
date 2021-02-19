@@ -9,7 +9,10 @@
   <link href="assets/material_modules/morrisjs/morris.css" rel="stylesheet" />
   <link href="assets/dist/css/pages/chat-app-page.css" rel="stylesheet">
   <link href="assets/material_modules/toast-master/css/jquery.toast.css" rel="stylesheet" />
+  <link href="assets/material_modules/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet">
+  <link href="assets/material_modules/wizard/steps.css" rel="stylesheet">
   <link href="assets/dist/css/style.min.css" rel="stylesheet" />
+  <link href="assets/dist/css/pages/bootstrap-switch.css" rel="stylesheet">
   <link href="assets/dist/css/pages/dashboard1.css" rel="stylesheet" />
 </head>
 
@@ -36,6 +39,19 @@
         <a href="https://premware.services/" target="_blank">Premware Services India LLP.</a>
       </footer>
   </div>
+  <style>
+    @media (max-width: 767px) {
+      .table-responsive .dropdown-menu {
+        position: static !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .table-responsive {
+        overflow: inherit;
+      }
+    }
+  </style>
   <%- include('../partials/foot.ejs') %>
 </body>
 
