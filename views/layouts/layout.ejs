@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Express Elite Admin</title>
-    <link href="assets/material_modules/morrisjs/morris.css" rel="stylesheet" />
-    <link
-      href="assets/material_modules/toast-master/css/jquery.toast.css"
-      rel="stylesheet"
-    />
-    <link href="assets/dist/css/style.min.css" rel="stylesheet" />
-    <link href="assets/dist/css/pages/dashboard1.css" rel="stylesheet" />
-  </head>
 
-  <body class="skin-default fixed-layout" ng-app="MyApp">
-    <!-- Preloader -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="loader__figure"></div>
-        <p class="loader__label">Elite admin</p>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fast Whistle</title>
+  <link href="assets/material_modules/morrisjs/morris.css" rel="stylesheet" />
+  <link href="assets/dist/css/pages/chat-app-page.css" rel="stylesheet">
+  <link href="assets/material_modules/toast-master/css/jquery.toast.css" rel="stylesheet" />
+  <link href="assets/dist/css/style.min.css" rel="stylesheet" />
+  <link href="assets/dist/css/pages/dashboard1.css" rel="stylesheet" />
+</head>
+
+<body class="skin-default fixed-layout" ng-app="MyApp">
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="loader">
+      <div class="loader__figure"></div>
+      <p class="loader__label">Elite admin</p>
     </div>
-    <!-- Preloader -->
-    <div id="main-wrapper">
-      <%- include('../partials/head.ejs') %>
+  </div>
+  <!-- Preloader -->
+  <div id="main-wrapper">
+    <%- include('../partials/head.ejs') %>
       <div class="page-wrapper">
-        <div class="container-fluid"><%- body %></div>
+        <div class="container-fluid">
+          <%- body %>
+        </div>
       </div>
       <footer class="footer">
         © 2021
         <a href="https://fastwhistle.com" target="_blank">Fast Whistle</a>
         Designed & Developed by
-        <a href="https://premware.services/" target="_blank"
-          >Premware Services India LLP.</a
-        >
+        <a href="https://premware.services/" target="_blank">Premware Services India LLP.</a>
       </footer>
-    </div>
-    <%- include('../partials/foot.ejs') %>
-  </body>
+  </div>
+  <%- include('../partials/foot.ejs') %>
+</body>
+
 </html>

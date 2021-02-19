@@ -30,8 +30,36 @@ router.get("/orders", (req, res, next) => {
   res.render("pages/orders");
 });
 
-router.get("/drivers", (req, res, next) => {
+router.get("/ourcustomers", (req, res, next) => {
+  res.render("pages/customers");
+});
+
+router.get("/customerlogs", (req, res, next) => {
+  res.render("pages/customer_logs");
+});
+
+router.get("/ourdrivers", (req, res, next) => {
   res.render("pages/drivers");
+});
+
+router.get("/driversupport", (req, res, next) => {
+  res.render("pages/driver_support");
+});
+
+router.get("/customersupport", (req, res, next) => {
+  res.render("pages/customer_support");
+});
+
+router.get("/sendnotification", (req, res, next) => {
+  res.render("pages/app_notification");
+});
+
+router.get("/desktopmessages", (req, res, next) => {
+  res.render("pages/desktop_message");
+});
+
+router.get("/notificationsettings", (req, res, next) => {
+  res.render("pages/notification_settings");
 });
 
 module.exports = router;
