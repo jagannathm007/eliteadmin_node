@@ -9,7 +9,7 @@ function generateAccessToken(userData) {
 
 //Authenticate Access Token.
 function authenticated(req, res, next) {
-    const bearerHeader = req.headers['authorization'];
+    const bearerHeader = req.headers['Authorization'];
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(' ');
         const token = bearer[1];
