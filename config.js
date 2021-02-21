@@ -1,6 +1,12 @@
 require("dotenv").config();
+var express = require("express");
+var app = express();
 var mongoose = require("mongoose");
 var jwt = require("jsonwebtoken");
+var users = require("./models/users");
+const io = require("socket.io")();
+const socketapi = { io: io };
+
 
 //Generate Access Token.
 function generateAccessToken(userData) {
@@ -34,6 +40,23 @@ function authenticated(req, res, next) {
     }
 }
 
+//Socket Connection
+io.on("connection", function (socket) {
+    console.log("A user connected");
+
+    //onLoad
+    socket.on('onLoad', async function (userId) {
+        var findUser = await users.find({ _id: userId });
+        if (findUser.length == 1) {
+            socket.emit("online");
+            io.sockets.emit('system', nickname, users.length, 'login');
+        }
+    });
+
+});
+
+
+
 //Connecting with mongoDB Database
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 mongoose.connection
@@ -43,5 +66,6 @@ mongoose.connection
 module.exports = {
     generateAccessToken,
     authenticated,
+    socketapi,
     mongoose
 }
