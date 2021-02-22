@@ -16,6 +16,7 @@ EliteAdmin.controller("LoginController", function ($scope, $http) {
         }).then(
             function (response) {
                 if (response.data.Data.length == 1) {
+                    sessionStorage.setItem("sessId", response.data.Data[0].userData._id);
                     sessionStorage.setItem("sKey", response.data.Data[0].accessToken);
                     sessionStorage.setItem("adminName", response.data.Data[0].userData.name);
                     window.location.href = "dashboard";

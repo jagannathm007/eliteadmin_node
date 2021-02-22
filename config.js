@@ -44,10 +44,16 @@ function authenticated(req, res, next) {
 io.on("connection", function (socket) {
     console.log("A user connected");
 
-    //onLoad
-    socket.on('onLoad', async function (userId) {
-        var findUser = await users.find({ _id: userId });
+    //Take Current Locations Of Drivers
+    socket.on('locationSocket', async function (data) {
+        console.log(data.sessionId);
+        var findUser = await users.find({ _id: data.userId });
         if (findUser.length == 1) {
+            var getLocation = {
+                latitude: data.latitude,
+                longitude: data.longitude
+            };
+            console.log(getLocation);
             socket.emit("online");
             io.sockets.emit('system', nickname, users.length, 'login');
         }
