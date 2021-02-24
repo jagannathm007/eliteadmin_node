@@ -1,4 +1,11 @@
-var EliteAdmin = angular.module("MyApp", []);
+var EliteAdmin = angular.module("MyApp", ['btford.socket-io']);
+
+//Enabling Socket Services
+EliteAdmin.service('SocketService', ['socketFactory', function SocketService(socketFactory) {
+    return socketFactory({
+        ioSocket: io.connect(window.location.origin)
+    });
+}]);
 
 //consts
 var apiUrl = window.location.origin + "/webv1/";

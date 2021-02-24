@@ -16,4 +16,8 @@ router.post("/getPackageContents", webv1Ctrl.getPackageContents);
 router.post("/addEditPackageContents", webv1Ctrl.addEditPackageContents);
 router.post("/deletePackageContent", webv1Ctrl.deletePackageContent);
 
+//Customers
+router.post("/getCustomers",webv1Ctrl.getCustomers);
+router.post("/addCustomer",webv1Ctrl.addCustomer);
+
 module.exports = router;

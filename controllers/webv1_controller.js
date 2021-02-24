@@ -1,7 +1,8 @@
 var config = require("../config");
 //import schema models
-var adminLoginSchema = require("../models/admin_login");
 var areaSchema = require("../models/area");
+var userSchema = require("../models/users");
+var adminLoginSchema = require("../models/admin_login");
 var packageContentsSchema = require("../models/package_contents");
 
 exports.loginRequest = async function (req, res, next) {
@@ -168,6 +169,56 @@ exports.deletePackageContent = async function (req, res, next) {
         await packageContentsSchema.findByIdAndDelete(id);
         res.status(200).json({
             Message: "Package Contents Deleted!",
+            Data: 1,
+            IsSuccess: true
+        });
+    } catch (err) {
+        res.status(500).json({
+            Message: err.message,
+            Data: 0,
+            IsSuccess: false
+        });
+    }
+}
+
+//Customer
+exports.getCustomers = async function (req, res, next) {
+    try {
+        var userList = await userSchema.find();
+        if (userList.length > 0) {
+            res.status(200).json({
+                Message: "Customer Found!",
+                Data: userList,
+                IsSuccess: true
+            });
+        } else {
+            res.status(200).json({
+                Message: "No Customer Found!",
+                Data: userList,
+                IsSuccess: true
+            });
+        }
+    } catch (err) {
+        res.status(500).json({
+            Message: err.message,
+            Data: 0,
+            IsSuccess: false
+        });
+    }
+}
+
+exports.addCustomer = async function (req, res, next) {
+    try {
+        const { name, mobile, signupBy, email } = req.body;
+        var newUser = new userSchema({
+            name: name,
+            mobile: mobile,
+            signupBy: signupBy,
+            email: email
+        });
+        await newUser.save();
+        res.status(200).json({
+            Message: "Package Contents Saved!",
             Data: 1,
             IsSuccess: true
         });

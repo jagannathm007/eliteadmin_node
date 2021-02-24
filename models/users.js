@@ -26,8 +26,8 @@ var userSchema = new mongoose.Schema({
         default: false
     },
     status: {
-        type: String,
-        required: true
+        type: Boolean,
+        default:false
     },
 });
 
