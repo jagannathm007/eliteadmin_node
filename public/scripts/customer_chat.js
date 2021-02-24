@@ -4,7 +4,6 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
     $scope.sesssId = sessionStorage.getItem("sessId");
     $scope.currentCustomerId = "";
 
-
     $scope.messageBox = "";
 
     $scope.getChatByCustomer = function (customerId) {
@@ -37,14 +36,6 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
     SocketService.on('newAdminChat', function (chat) {
         $scope.currentChat.push(chat);
     });
-
-    $(document).ready(function(){
-        window.setInterval(function() {
-            $(".ps__scrollbar-y").stop().animate({ scrollTop: $(".ps__scrollbar-y")[0].scrollHeight}, 1000);
-            console.log("called");
-          }, 5000);
-    });
-
 
     $scope.getCustomer = function () {
         $http({
