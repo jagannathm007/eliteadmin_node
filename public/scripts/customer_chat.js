@@ -3,13 +3,15 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
     $scope.currentChat = [];
     $scope.sesssId = sessionStorage.getItem("sessId");
     $scope.currentCustomerId = "";
-
     $scope.messageBox = "";
 
     $scope.getChatByCustomer = function (customerId) {
         $scope.currentCustomerId = customerId;
         $scope.currentChat = [];
-        SocketService.emit("getAdminChats", { customerId: customerId,adminId:$scope.sesssId});
+        SocketService.emit("getAdminChats", {
+            customerId: customerId,
+            adminId: $scope.sesssId
+        });
     }
 
     $scope.newMessage = function () {
@@ -20,9 +22,8 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
                 message: $scope.messageBox,
             }
             SocketService.emit("addAdminChat", chatData);
-            $scope.messageBox ="";
-        }
-        else {
+            $scope.messageBox = "";
+        } else {
             console.log("Please Enter Some Message!");
         }
     }
@@ -30,11 +31,16 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
     SocketService.on('getAdminChatList', function (chatList) {
         $scope.currentChat = chatList;
         console.log($scope.currentChat);
-        
+        $('.chat-list').animate({
+            scrollTop: $('.chat-list').prop("scrollHeight")
+        }, 500);
     });
 
     SocketService.on('newAdminChat', function (chat) {
         $scope.currentChat.push(chat);
+        $('.chat-list').animate({
+            scrollTop: $('.chat-list').prop("scrollHeight")
+        }, 500);
     });
 
     $scope.getCustomer = function () {

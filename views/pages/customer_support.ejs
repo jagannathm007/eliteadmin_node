@@ -1,4 +1,9 @@
 <script src="scripts/customer_chat.js"></script>
+<style>
+    .chat-list {
+        overflow-y: auto;
+    }
+</style>
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
         <h4 class="text-themecolor">Customers Support</h4>
@@ -32,7 +37,7 @@
                                 data-ps-id="05a22471-baec-b180-857f-7e17fd45e22e">
                                 <li ng-repeat="customer in customerList | filter:search">
                                     <a href="javascript:void(0)" ng-click="getChatByCustomer(customer._id)">
-                                        <img src="https://lh3.googleusercontent.com/proxy/Ktkbr1D5Z2rsMm7HUSeK80iYOP_W4AZqeeDRNkpT8e62NsQ-aC6nDwSu5VRCSne5SF4pxhQ8dKMUrc6v1XbNwUiv5IAyqQNsGgch_J4762nD9RvGvDj1EQ"
+                                        <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image.png"
                                             alt="user-img" class="img-circle"> <span>{{customer.name}} <small
                                                 class="text-success">online</small></span></a>
                                 </li>
@@ -57,10 +62,11 @@
                                 <h4 class="box-title">Chat Message</h4>
                             </div>
                         </div>
-                        <div class="chat-rbox ps ps--theme_default" data-ps-id="daf577d7-bc07-69f1-4164-92bb383064ed">
+                        <div class="chat-rbox">
                             <ul class="chat-list p-3" style="height: 209px;">
                                 <!--chat Row -->
-                                <li ng-repeat="chat in currentChat" class="{{chat.from._id == sesssId?'reverse':''}}">
+                                <li ng-repeat="chat in currentChat" class="{{chat.from._id == sesssId?'reverse':''}}"
+                                    id="chat{{$index}}">
                                     <div ng-if="chat.from._id != sesssId" class="chat-img"><img
                                             src="../assets/images/users/1.jpg" alt="user"></div>
                                     <div class="chat-content">
@@ -71,22 +77,7 @@
                                     <div ng-if="chat.from._id == sesssId" class="chat-img"><img
                                             src="../assets/images/users/1.jpg" alt="user"></div>
                                 </li>
-                                <!--chat Row -->
-                                <!-- <li class="reverse">
-                                    <div class="chat-content">
-                                        <h5>Steave Doe</h5>
-                                        <div class="box bg-light-inverse">It’s Great opportunity to work.</div>
-                                        <div class="chat-time">10:57 am</div>
-                                    </div>
-                                    <div class="chat-img"><img src="../assets/images/users/5.jpg" alt="user"></div>
-                                </li> -->
                             </ul>
-                            <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                                <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                            </div>
-                            <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">
-                                <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-                            </div>
                         </div>
                         <div class="card-body border-top">
                             <div class="row">
