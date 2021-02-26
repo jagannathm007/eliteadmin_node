@@ -80,16 +80,18 @@
                             </ul>
                         </div>
                         <div class="card-body border-top">
+                            <form ng-submit="newMessage()">
                             <div class="row">
-                                <div class="col-8">
-                                    <textarea placeholder="Type your message here" class="form-control border-0"
-                                        ng-model="messageBox"></textarea>
+                                <div class="col-9">
+                                    <input type="text" placeholder="Type your message here" class="form-control border-0"
+                                    ng-model="messageBox" required>
                                 </div>
-                                <div class="col-4 text-right">
-                                    <button type="button" class="btn btn-info btn-circle btn-lg"><i
-                                            class="fas fa-paper-plane" ng-click="newMessage()"></i> </button>
+                                <div class="col-3 text-right">
+                                    <button type="submit" class="btn btn-info btn-lg"><i
+                                            class="fas fa-paper-plane" ></i> Send</button>
                                 </div>
                             </div>
+                        </form>
                         </div>
                     </div>
                     <!-- .chat-right-panel -->

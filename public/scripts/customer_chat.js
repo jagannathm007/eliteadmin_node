@@ -3,15 +3,21 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
     $scope.currentChat = [];
     $scope.sesssId = sessionStorage.getItem("sessId");
     $scope.currentCustomerId = "";
+    $scope.chatTextTitle = "";
     $scope.messageBox = "";
 
     $scope.getChatByCustomer = function (customerId) {
-        $scope.currentCustomerId = customerId;
-        $scope.currentChat = [];
-        SocketService.emit("getAdminChats", {
-            customerId: customerId,
-            adminId: $scope.sesssId
-        });
+        if ($scope.currentCustomerId != customerId) {
+            $scope.currentCustomerId = customerId;
+            $scope.chatTextTitle = "";
+            $scope.currentChat = [];
+            SocketService.emit("getAdminChats", {
+                customerId: customerId,
+                adminId: $scope.sesssId
+            });
+        }else{
+            console.log("Already Opened!");
+        }
     }
 
     $scope.newMessage = function () {
@@ -32,7 +38,7 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
         $scope.currentChat = chatList;
         console.log($scope.currentChat);
         $('.chat-list').animate({
-            scrollTop: $('.chat-list').prop("scrollHeight")
+            scrollTop: $('.chat-list').prop("scrollHeight") * $scope.currentChat.length
         }, 500);
     });
 
@@ -40,7 +46,7 @@ EliteAdmin.controller("CustomerChatController", function ($scope, $http, SocketS
         $scope.currentChat.push(chat);
         $('.chat-list').animate({
             scrollTop: $('.chat-list').prop("scrollHeight")
-        }, 500);
+        }, 1000);
     });
 
     $scope.getCustomer = function () {

@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var mongoosePaginate = require('mongoose-paginate-v2');
 
 var chatSchema = new mongoose.Schema({
     from: {
@@ -16,5 +17,6 @@ var chatSchema = new mongoose.Schema({
         default: Date.now()
     }
 });
+chatSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('chats', chatSchema);
