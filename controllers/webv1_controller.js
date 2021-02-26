@@ -42,11 +42,8 @@ exports.getServingAreas = async function (req, res, next) {
 
         var areaList = await areaSchema.paginate({}, {
             page: req.body.page || 1,
-            limit: 10
+            limit: req.body.limit || 10
         });
-        areaList.page = Number(areaList.page);
-
-
         if (areaList.length > 0) {
             res.status(200).json({
                 Message: "Serving Areas Found!",

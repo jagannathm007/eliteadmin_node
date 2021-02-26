@@ -1,6 +1,8 @@
 EliteAdmin.controller("ServingAreaController", function ($scope, $http) {
   $scope.areaList = [];
   $scope.selectedId = "0";
+  $scope.nrecords = "10";
+  $scope.currentPage = "1";
 
   $scope.clearAll = function () {
     $scope.selectedId = "0";
@@ -13,14 +15,14 @@ EliteAdmin.controller("ServingAreaController", function ($scope, $http) {
       url: apiUrl + "getServingArea",
       method: "POST",
       cache: false,
-      data: {},
+      data: { limit: $scope.nrecords,page:$scope.currentPage },
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
         "Authorization": "Bearer " + sessionStorage.getItem("sKey"),
       },
     }).then(
       function (response) {
-        if (response.data.IsSuccess == true && response.data.Data.length > 0) {
+        if (response.data.IsSuccess == true && response.data != null) {
           $scope.areaList = response.data.Data;
         }
         console.log("Total Areas: " + $scope.areaList.length);
@@ -35,6 +37,15 @@ EliteAdmin.controller("ServingAreaController", function ($scope, $http) {
     );
   };
   $scope.getAreas();
+
+  $scope.onShowRecords = function(){
+    $scope.getAreas();
+  }
+
+  $scope.onPageChange = function(page){
+    $scope.currentPage = page;
+    $scope.getAreas();
+  }
 
   $scope.onEdit = function (area) {
     $scope.selectedId = area._id;

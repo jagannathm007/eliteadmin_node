@@ -39,6 +39,19 @@
                 <div class="card-body">
                     <h4 class="card-title">DATA</h4>
                     <h6 class="card-subtitle">Listing of your serving areas.</h6>
+                    <div class="row p-b-10">
+                        <div class="col-md-3">
+                            <select class="form-control" ng-model="nrecords" ng-change="onShowRecords()">
+                                <option value="10" selected>10</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" ng-model="searchBox" placeholder="Search Here...">
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-stripped">
                             <thead>
@@ -49,8 +62,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="area in areaList">
-                                    <td>{{$index+1}}</td>
+                                <tr ng-repeat="area in areaList.docs | filter:searchBox">
+                                    <td>{{ (currentPage - 1) * 10 + $index+1}}</td>
                                     <td>{{area.areaName}}</td>
                                     <td>
                                         <a href="#" ng-click="onEdit(area)" class="btn btn-primary btn-sm"
@@ -62,6 +75,19 @@
                             </tbody>
                         </table>
                     </div>
+                    <nav ng-show="areaList.length > 0">
+                        <ul class="pagination pagination-sm">
+                            <li class="page-item {{areaList.hasPrevPage == true?'':'disabled'}}">
+                                <a class="page-link" ng-click="onPageChange(areaList.prevPage)" href="javascript:void(0)" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item {{p+1==areaList.page?'active':''}}" ng-repeat="p in [] | range:areaList.totalPages">
+                                <a class="page-link" ng-click="onPageChange(p+1)" href="javascript:void(0)">{{p+1}}</a>
+                            </li>
+                            <li class="page-item {{areaList.hasNextPage == true?'':'disabled'}}">
+                                <a class="page-link" ng-click="onPageChange(areaList.nextPage)" href="javascript:void(0)">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
