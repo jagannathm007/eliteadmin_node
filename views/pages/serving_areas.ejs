@@ -40,7 +40,7 @@
                     <h4 class="card-title">DATA</h4>
                     <h6 class="card-subtitle">Listing of your serving areas.</h6>
                     <div class="row p-b-10">
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <select class="form-control" ng-model="nrecords" ng-change="onShowRecords()">
                                 <option value="10" selected>10</option>
                                 <option value="50">50</option>
@@ -50,6 +50,15 @@
                         </div>
                         <div class="col-md-3">
                             <input type="text" class="form-control" ng-model="searchBox" placeholder="Search Here...">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" ng-model="fDate">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" ng-model="tDate">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="button" class="btn btn-primary" value="Search" ng-click="checkDate()">
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -75,7 +84,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <nav ng-show="areaList.length > 0">
+                    <nav ng-show="areaList.docs.length > 0?true:false">
                         <ul class="pagination pagination-sm">
                             <li class="page-item {{areaList.hasPrevPage == true?'':'disabled'}}">
                                 <a class="page-link" ng-click="onPageChange(areaList.prevPage)" href="javascript:void(0)" tabindex="-1">Previous</a>

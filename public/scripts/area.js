@@ -15,7 +15,7 @@ EliteAdmin.controller("ServingAreaController", function ($scope, $http) {
       url: apiUrl + "getServingArea",
       method: "POST",
       cache: false,
-      data: { limit: $scope.nrecords,page:$scope.currentPage },
+      data: { limit: $scope.nrecords, page: $scope.currentPage },
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
         "Authorization": "Bearer " + sessionStorage.getItem("sKey"),
@@ -38,11 +38,11 @@ EliteAdmin.controller("ServingAreaController", function ($scope, $http) {
   };
   $scope.getAreas();
 
-  $scope.onShowRecords = function(){
+  $scope.onShowRecords = function () {
     $scope.getAreas();
   }
 
-  $scope.onPageChange = function(page){
+  $scope.onPageChange = function (page) {
     $scope.currentPage = page;
     $scope.getAreas();
   }
@@ -119,5 +119,34 @@ EliteAdmin.controller("ServingAreaController", function ($scope, $http) {
       );
     }
 
+  }
+
+  $scope.checkDate = function () {
+    console.log($scope.fDate);
+    console.log($scope.tDate);
+    $http({
+      url: apiUrl + "testDate",
+      method: "POST",
+      cache: false,
+      data: { fDate: $scope.fDate, tDate: $scope.tDate, limit: $scope.nrecords, page: $scope.currentPage },
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        "Authorization": "Bearer " + sessionStorage.getItem("sKey"),
+      },
+    }).then(
+      function (response) {
+        if (response.data.IsSuccess == true && response.data.Data != null) {
+          console.log(response.data.Data);
+          $scope.areaList = response.data.Data;
+        }
+      },
+      function (error) {
+        if (error.status == 401) {
+          window.location.href = autoLogoutRoute;
+        } else {
+          console.error("Something Went Wrong! try again");
+        }
+      }
+    );
   }
 });

@@ -20,4 +20,7 @@ router.post("/deletePackageContent", webv1Ctrl.deletePackageContent);
 router.post("/getCustomers",webv1Ctrl.getCustomers);
 router.post("/addCustomer",webv1Ctrl.addCustomer);
 
+//Testing Apis
+router.post("/testDate", webv1Ctrl.getServingAreasByDate);
+
 module.exports = router;

@@ -66,6 +66,40 @@ exports.getServingAreas = async function (req, res, next) {
     }
 }
 
+exports.getServingAreasByDate = async function (req, res, next) {
+    try {
+        var areaList = await areaSchema.paginate({
+            createdAt: {
+                $gte: req.body.fDate,
+                $lt: req.body.tDate
+            }
+        }, {
+            page: req.body.page || 1,
+            limit: req.body.limit || 10
+        });
+        if (areaList.length > 0) {
+            res.status(200).json({
+                Message: "Serving Areas Found!",
+                Data: areaList,
+                IsSuccess: true
+            });
+        } else {
+            res.status(200).json({
+                Message: "No, Serving Areas Found!",
+                Data: areaList,
+                IsSuccess: true
+            });
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).json({
+            Message: err.message,
+            Data: 0,
+            IsSuccess: false
+        });
+    }
+}
+
 exports.addEditServingArea = async function (req, res, next) {
     try {
         const { id, areaName } = req.body;
