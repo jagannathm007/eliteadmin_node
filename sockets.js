@@ -1,6 +1,7 @@
 //Sockets
 const io = require("socket.io")();
 const socketapi = { io: io };
+var aes256 = require('aes256');
 
 //Schemas
 var users = require("./models/users");
@@ -42,9 +43,20 @@ io.on("connection", function (client) {
         //If user found then send all chats
         var findUser = await users.find({ _id: data.customerId });
         if (findUser.length == 1) {
-            var chatList = await chats.find({ from: data.adminId,to: findUser[0]._id })
-            .populate({ path: 'from', model: admins })
-            .populate({ path: 'to', model: users });
+            var chatList = await chats.find({ from: data.adminId, to: findUser[0]._id })
+                .populate({ path: 'from', model: admins })
+                .populate({ path: 'to', model: users });
+
+            var updatedChats = [];
+            for (var i = 0; i < chatList.length; i++) {
+                if (data.adminId == chatList[i].from._id) {
+                    chatList[i].message = aes256.decrypt(data.adminId, chatList[i].message);
+                } else {
+                    chatList[i].message = aes256.decrypt(data.customerId, chatList[i].message);
+                }
+                updatedChats.push(chatList[i]);
+            }
+
             //Sending chats to client
             client.emit("getAdminChatList", chatList);
         }
@@ -52,13 +64,27 @@ io.on("connection", function (client) {
 
     //Send message from server to client
     client.on('addAdminChat', async function (data) {
+        //Encrypt Message Before Saving To Server
+
+        var encryptedPlainText = aes256.encrypt(data.from, data.message);
+        data.message = encryptedPlainText;
+
+        //Saving To Database
         var newChat = new chats(data);
         await newChat.save();
-        
-        //getLastChat
-        var chatList = await chats.find({ from: data.from,to: data.to }).sort({_id:-1}).limit(1)
+
+        //Get Last Chat Data With Populating
+        var chatList = await chats.find({ from: data.from, to: data.to }).sort({ _id: -1 }).limit(1)
             .populate({ path: 'from', model: admins })
             .populate({ path: 'to', model: users });
+
+        //Before Emiting Decrypt The Message
+        if (chatList.length > 0) {
+            var decryptedPlainText = aes256.decrypt(data.from, chatList[0].message);
+            chatList[0].message = decryptedPlainText;
+        }
+
+        //Emit Data To Client From Server.
         client.emit("newAdminChat", chatList[0]);
     });
 
